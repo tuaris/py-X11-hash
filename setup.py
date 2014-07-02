@@ -1,8 +1,8 @@
 from distutils.core import setup, Extension
 
-xcoin_hash_module = Extension('xcoin_hash',
-                               sources = ['xcoinmodule.c',
-                                          'xcoin.c',
+X11_hash_module = Extension('X11_hash',
+                               sources = ['X11module.c',
+                                          'X11.c',
 										  'sha3/blake.c',
 										  'sha3/bmw.c',
 										  'sha3/groestl.c',
@@ -16,7 +16,7 @@ xcoin_hash_module = Extension('xcoin_hash',
 										  'sha3/shavite.c'],
                                include_dirs=['.', './sha3'])
 
-setup (name = 'xcoin_hashs',
+setup (name = 'X11_hashs',
        version = '1.0',
-       description = 'Bindings for proof of work used by Xcoin',
-       ext_modules = [xcoin_hash_module])
+       description = 'Bindings for proof of work used by X11 Coins',
+       ext_modules = [X11_hash_module])

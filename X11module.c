@@ -1,8 +1,8 @@
 #include <Python.h>
 
-#include "xcoin.h"
+#include "X11.h"
 
-static PyObject *xcoin_getpowhash(PyObject *self, PyObject *args)
+static PyObject *X11_getpowhash(PyObject *self, PyObject *args)
 {
     char *output;
     PyObject *value;
@@ -17,9 +17,9 @@ static PyObject *xcoin_getpowhash(PyObject *self, PyObject *args)
     output = PyMem_Malloc(32);
 
 #if PY_MAJOR_VERSION >= 3
-    xcoin_hash((char *)PyBytes_AsString((PyObject*) input), output);
+    X11_hash((char *)PyBytes_AsString((PyObject*) input), output);
 #else
-    xcoin_hash((char *)PyString_AsString((PyObject*) input), output);
+    X11_hash((char *)PyString_AsString((PyObject*) input), output);
 #endif
     Py_DECREF(input);
 #if PY_MAJOR_VERSION >= 3
@@ -31,27 +31,27 @@ static PyObject *xcoin_getpowhash(PyObject *self, PyObject *args)
     return value;
 }
 
-static PyMethodDef XcoinMethods[] = {
-    { "getPoWHash", xcoin_getpowhash, METH_VARARGS, "Returns the proof of work hash using xcoin hash" },
+static PyMethodDef X11Methods[] = {
+    { "getPoWHash", X11_getpowhash, METH_VARARGS, "Returns the proof of work hash using X11 hash" },
     { NULL, NULL, 0, NULL }
 };
 
 #if PY_MAJOR_VERSION >= 3
-static struct PyModuleDef XcoinModule = {
+static struct PyModuleDef X11Module = {
     PyModuleDef_HEAD_INIT,
-    "xcoin_hash",
+    "X11_hash",
     "...",
     -1,
-    XcoinMethods
+    X11Methods
 };
 
-PyMODINIT_FUNC PyInit_xcoin_hash(void) {
-    return PyModule_Create(&XcoinModule);
+PyMODINIT_FUNC PyInit_X11_hash(void) {
+    return PyModule_Create(&X11Module);
 }
 
 #else
 
-PyMODINIT_FUNC initxcoin_hash(void) {
-    (void) Py_InitModule("xcoin_hash", XcoinMethods);
+PyMODINIT_FUNC initX11_hash(void) {
+    (void) Py_InitModule("X11_hash", X11Methods);
 }
 #endif

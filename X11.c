@@ -1,4 +1,4 @@
-#include "xcoin.h"
+#include "X11.h"
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
@@ -17,7 +17,7 @@
 #include "sha3/sph_echo.h"
 
 
-void xcoin_hash(const char* input, char* output)
+void X11_hash(const char* input, char* output)
 {
     sph_blake512_context     ctx_blake;
     sph_bmw512_context       ctx_bmw;
